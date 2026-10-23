@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        ".*": true
+    },
+    "workbench.editorAssociations": {
+        "": ""
+    },
+    "workbench.startupEditor": "readme"
+    
+}

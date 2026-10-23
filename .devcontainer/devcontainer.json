@@ -1,0 +1,58 @@
+{
+  "name": "Python Basics",
+  "containerEnv": {
+    "SYNC_BASH_HISTORY": "true"
+  },
+  "postCreateCommand": "bash .profile/setup.sh",
+  "postStartCommand": "nohup bash .profile/auto-commit-all.sh > /tmp/autosave.log 2>&1 &",
+  "customizations": {
+    "codespaces": {
+      "remote.autoForwardPorts": false
+    },
+    "vscode": {
+      "extensions": [
+        "-ms-python.python",
+        "-ms-python.vscode-pylance",
+        "-ms-python.debugpy",
+        "-ms-python.vscode-python-environments"
+      ],
+      "settings": {
+        "terminal.integrated.suggest.enabled": false,
+        "extensions.ignoreRecommendations": true,
+        "files.exclude": {
+          "**/.devcontainer": true,
+          "**/.profile": true,
+          "**/__pycache__": true,
+          "**/.pytest_cache": true
+        },
+        // 1. Disable "Do you trust the authors?" popup for local Docker users
+        "security.workspace.trust.enabled": false,
+        "security.workspace.trust.startupPrompt": "never",
+        
+        // 2. Hide the Welcome Page and Release Notes
+        "workbench.startupEditor": "readme",
+        "update.showReleaseNotes": false,
+        
+        // 3. Disable distracting Git popups (since your autosave handles Git)
+        "git.enabled": true,
+        "git.showCommitInput": false,
+        "scm.showActionButton": false,         // Hides the giant "Commit" button
+        "git.confirmSync": false,
+        "git.autofetch": false,
+
+        // 4. Silence Python environment and testing prompts
+        "python.testing.promptToConfigure": false,
+        "python.experiments.enabled": false,
+        
+        // 5. Original AI blocks and formatting
+        "chat.disableAIFeatures": true,
+        "github.copilot.enable": { "*": false },
+        "github.copilot.editor.enableAutoCompletions": false,
+        "editor.tabSize": 4,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.minimap.enabled": false,
+        "editor.hover.delay": 1500
+      }
+    }
+  }
+}
